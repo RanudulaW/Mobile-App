@@ -158,6 +158,12 @@ export default function ExpenseForm({
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium uppercase tracking-wider mb-1">Select involved people</p>
                 {persons.map(p => (
                   <label key={p.id} className="flex items-center gap-3 cursor-pointer group">
+                    <input 
+                      type="checkbox" 
+                      className="hidden" 
+                      checked={involvedIds.has(p.id)}
+                      onChange={() => toggleInvolved(p.id)}
+                    />
                     <div className={`w-5 h-5 rounded flex items-center justify-center border transition-colors ${involvedIds.has(p.id) ? "bg-indigo-500 border-indigo-500" : "border-zinc-300 dark:border-zinc-600 group-hover:border-indigo-400"}`}>
                       {involvedIds.has(p.id) && <Check className="w-3.5 h-3.5 text-white" />}
                     </div>
